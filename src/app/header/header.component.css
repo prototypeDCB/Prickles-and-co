@@ -1,0 +1,161 @@
+@keyframes logo-color-change {
+    from {color: #A86550; font-weight: 400;}
+    to {color: black;font-weight: 700;}
+}
+
+@keyframes menu-item-color-change {
+    from {color: #A86550;}
+    to {color: black;}
+}
+
+* {
+    box-shadow: inset 0px 0px 0px 1px red;
+    /*border-style: dashed;
+    border-width: 1px;*/
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left:0;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(237,237,238);
+    font-family: "Lato", "Nunito Sans", sans-serif;
+    color: #A86550;
+    z-index: 10;
+}
+
+#left-side{
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 5%;
+    width: 50%;
+    height:100%;
+    
+    
+}
+
+#right-side{
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    right: 5%;
+    width: 40%;
+    height:100%;
+    
+}
+
+#logo {
+    height: 100%;
+    width: 8em;
+    /*color: #A86550;*/
+    font-size: 1.4em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+#logo:hover {
+    animation-name: logo-color-change;
+    animation-duration: 0.5s;
+    color: black;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#menu {
+   display: inline-flex;
+   justify-content: space-evenly;
+   align-items: center;
+   margin: 0 0 0 5em;
+}
+
+#menu span {
+    padding: 0 15px 0 15px;
+    font-weight: 300;
+    cursor: pointer;
+
+}
+
+#shop-dropdown {
+    position: fixed;
+    top: 60px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    background-color: rgb(237,237,238);
+    font-weight: 300;
+}
+
+#shop-dropdown li {
+    cursor: pointer;
+}
+
+#shop-dropdown li:hover {
+    animation-name: menu-item-color-change;
+    animation-duration: 0.3s;
+    color: black;
+}
+
+
+#shop-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#shop-dropdown li {
+    margin: 5px 5px 0 5px;
+}
+
+#message {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+#menu span:hover {
+    animation-name: menu-item-color-change;
+    animation-duration: 0.3s;
+    color: black;
+}
+
+#avatar {
+    margin: 0 0 0 2em;
+}
+
+#login {
+    margin: 0 0 0 0.5em;
+}
+
+#shopping {
+    margin: 0 0 0 2em;
+    cursor: pointer;
+}
+
+#shopping > div {
+    position: absolute;
+    color: white;
+    top: 27px;
+    right: 17px;
+    font-weight: 900;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.icon {
+    height: 40px;
+    width: 40px;
+}
+
+.header-element {
+    display: flex;
+    align-items: center;
+}

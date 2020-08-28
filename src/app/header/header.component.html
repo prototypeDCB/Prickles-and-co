@@ -1,0 +1,42 @@
+<div id="header">
+    <div id="left-side">
+        <div id="logo" (click)="loadShop(ShopType.HomeBody)">PRICKLES & CO.</div>
+
+        <nav id="menu">
+            <span (click)="loadShop(ShopType.HomeBody)">Home</span>
+            <div id="menu-shop" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+                <span (click)="loadShop(ShopType.All);">Shop</span>
+                <div id="shop-dropdown" (mouseenter)="showDropdown()">
+                    <ul>
+                        <li (click)="loadShop(ShopType.Cacti);">Cacti</li>
+                        <li (click)="loadShop(ShopType.Plants);">Plants</li>
+                        <li (click)="loadShop(ShopType.Succulents);">Succulents</li>
+                    </ul>
+                </div>
+            </div>
+            <span (click)="loadShop(ShopType.About)">About</span>
+            <span (click)="loadShop(ShopType.FAQ)">FAQ</span>
+            <span (click)="loadShop(ShopType.Contact)">Contact</span>
+        </nav>
+
+    </div>
+
+    <div id="right-side">
+        <div class="header-element" id="message">We deliver to your doorstep</div>
+
+        <div class="header-element">
+            <div class="icon" id="avatar">
+                <img src="../../assets/images/default-avatar.png">
+            </div>
+        </div>
+
+        <div class="header-element" id="login">Log in</div>
+
+        <div class="header-element">
+            <div class="icon" id="shopping" (click)="toggleDisplayCart()">
+                <img src="../../assets/images/shopping-bag.png">
+                <div><span>{{productFetch.getCartContents().length}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div id="faq-container">
+    <div id="faq">
+        <div id="title"><span>FAQ</span></div>
+        <div id="separator"></div>
+        <div id="subtitle"><span>Frequently Asked Questions</span></div>
+        <div id="questions">
+            <div *ngFor="let item of questions; let i = index" [id]="'question-container' + i" class="question-container" (click)="toggleQuestion('question-container' + i)">
+                <div class="question"><span>{{item.q}}</span><span class="open-indicator">+</span></div>
+                <div class="answer"><p [innerHtml]="item.a"></p></div>
+                <div class="question-separator"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+

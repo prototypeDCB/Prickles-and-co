@@ -1,0 +1,7 @@
+<div id="product-container">
+    <div id="product-image"><img [src]="imageUrl"></div>
+    <div *ngIf="imageHoverUrl" id="product-image-hover"><img [src]="imageHoverUrl"></div>
+    <div id="description"><span>{{ description }}</span></div>
+    <div id="price"><span>{{ price | currency }}</span></div>
+    <div id="buy" (click)="addProduct()"><span>Add to cart</span></div>
+</div>

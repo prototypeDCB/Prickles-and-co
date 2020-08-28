@@ -1,0 +1,11 @@
+<div id="shipping-container">
+    <div id="shipping">
+        <div id="sections">
+            <div *ngFor="let sect of finalSections; let i = index" [id]="'section'+i" class="section">
+                <div class="section-title"><span>{{sect.t}}</span></div>
+                <div class="separator"></div>
+                <div class="section-content" [innerHtml]="sect.p"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+
+
+
+
+* {
+    /*border-style: dashed;*/
+    /*box-shadow: inset 0px 0px 0px 1px red;*/
+    /*border-width: 1px;*/
+}
+
+@keyframes subscribe-button-in {
+    from {background-color: white; color: #1A3032;}
+    to {background-color: #44595B; color: white;}
+}
+@keyframes subscribe-button-out{
+    from {background-color: #44595B; color: white;}
+    to {background-color: white; color: #1A3032;}
+}
+
+#footer-parent{
+    padding:0 5vw 0 5vw;
+    background-color: rgb(237,237,238);
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1A3032;
+    color: white;
+    font-family: "Lato", "Nunito Sans", sans-serif;
+}
+
+.footer-half {
+    margin: 100px 0 0 0;
+}
+
+#footer-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 20vw;
+}
+
+.footer-container-title {
+    letter-spacing: 0.45em;
+    margin: 0 0 20px 0;
+}
+
+#footer-subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#footer-subscribe-form{
+    display: flex;
+    width: 425px;
+}
+
+#subscribe-left-container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    padding: 0 20px 0 0;
+}
+
+#subscribe-left-container input {
+    padding: 10px;
+    background-color: #1A3032;
+    font-family: "Lato", "Nunito Sans", sans-serif;
+    color: white;
+    border: 1px solid white;
+
+}
+
+#subscribe-left-container  ::placeholder {
+    color: white;
+}
+
+#subscribe-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+#subscribe-right-container button {
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    animation-name: subscribe-button-out;
+    animation-duration: 0.2s;
+    color: #1A3032;
+    border-width: 0px;
+    cursor: pointer;
+}
+#subscribe-right-container button:hover {
+    animation-name: subscribe-button-in;
+    animation-duration: 0.2s;
+    background-color: #44595B;
+    color: white;    
+}
+
+#social-media-container {
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 50px 0;
+
+}
+
+.social-media-logo {
+    width: 24px;
+    height: 24px;
+}
+
+.social-media-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+#store-location {
+    width: 80vw;
+    height: 500px;
+    margin: 0 0 50px 0;
+}

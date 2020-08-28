@@ -1,0 +1,339 @@
+@keyframes shop-button-hover-in {
+    from {background-color: #A86550;}
+    to {background-color: #D0B0A6;}
+}
+@keyframes shop-button-hover-out {
+    from {background-color: #D0B0A6 ;}
+    to {background-color: #A86550;}
+}
+
+* {
+    /*border-style: dashed;*/
+   /*box-shadow: inset 0px 0px 0px 1px red;*/
+    /*border-width: 1px;*/
+}
+
+#body {
+    background-color:  rgb(237,237,238);
+    font-family: "Lato", "Nunito Sans", sans-serif;
+    padding: 0 5vw 0 5vw;
+    transition: opacity 0.6s ease;
+    opacity: 0;
+}
+
+#company-name-container {
+    background: url("../../assets/images/background-flowers.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#company-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    height: 100vh;
+    background: rgba(26,48,50,0.5);
+}
+
+#company-logo-container {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 128px;
+    letter-spacing: 0.45em;
+    font-size: 0.9em;
+    
+}
+
+.logo-text span {
+    width: 5em;
+    text-align: center;
+}
+
+.logo-text div {
+    background-color: white;
+    width: 4em;
+    height: 2px;
+}
+
+#company-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+#company-logo {
+    width: 128px;
+    height: 128px;
+    display: inline-block;
+}
+
+#company-name-title {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 6em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    height: 150px;
+}
+
+#company-name-subtitle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    letter-spacing: 0.35em;
+    height: 35px;
+    font-size: 1.3em;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A86550;
+    animation-name: shop-button-hover-out;
+    animation-duration: 0.2s;
+    cursor: pointer;
+    color:white;
+    height: 40px;
+    width:180px;
+}
+
+.button:hover {
+    animation-name: shop-button-hover-in;
+    animation-duration: 0.2s;
+    background-color: #D0B0A6;
+}
+#shop-button {
+    margin-top: 50px;
+}
+
+#product-categories {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(237,237,238);
+    padding: 60px 0 60px 0;
+}
+
+.product {
+    width: 27vw;
+    height: 498px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.product-title {
+    display: flex;
+    justify-content: center;
+    color: #A86550;
+    font-weight: 700;
+    font-size: 1.3em;
+    letter-spacing: 0.2em;
+    padding-top: 30px;
+    
+}
+
+.underline-separator {
+    width: 2em;
+    height: 3px;
+    background-color: #A86550;
+    margin: 10px 0 20px 0;
+}
+
+#cacti-container {
+    background-image: url("../../assets/images/product-cactii.png");
+}
+#plants-container {
+    background-image: url("../../assets/images/product-plants.png");
+}
+
+#socculents-container {
+    background-image: url("../../assets/images/product-succulents.png");
+}
+
+#about-scroll-marker {
+    position: relative;
+    bottom: 60px;
+}
+
+#about {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90vw;
+}
+
+#about-us {
+    width: 45vw;
+    height: 498px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #A86550;
+    font-weight: 400;
+}
+
+#about-us-title {
+    letter-spacing: 0.45em;
+}
+#about-us-paragraphs {
+    width: 31em;
+}
+
+#pic12 {
+    width: 45vw;
+    height:498px;
+    display: flex;
+}
+
+#pic1 {
+    background-image: url("../../assets/images/banner1.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 498px;
+    width: 22.5vw;
+}
+#pic2 {
+    background-image: url("../../assets/images/banner2.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 498px;
+    width:22.5vw;
+}
+
+#pic3 {
+    background-image: url("../../assets/images/banner3.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: -20px 0%;
+    height: 700px;
+    width: 45vw;
+}
+
+#about-buy-now {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:45vw;
+    background-color: #1A3032;
+
+}
+#about-buy-now-text-container {
+    color: #A86550;
+    font-size: 5em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#requests-container {
+    background: url("../../assets/images/background-flowers-2.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#requests-marker {
+    position: relative;
+    top: -80px;
+}
+#requests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgba(0,0,0,0.1);
+}
+
+#requests-title {
+    color: #A86550;
+    letter-spacing: 0.45em;
+    font-size: 1.2em;
+}
+
+#form {
+    width: 750px;
+    font-family: "Lato", "Nunito Sans", sans-serif;
+}
+
+#form label {
+    font-weight: 300;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80px;
+}
+
+
+#form-name-email-container {
+    display: flex;
+    justify-content: space-between;
+}
+#form-name-email-container div {
+    width: 48%;
+}
+
+#form input {
+    color: #123132;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#form-text-area-container {
+    height: 200px;
+}
+#form-textarea {
+    resize: none;
+    font-family: "Lato", "Nunito Sans", sans-serif;
+    color: #123132;
+    padding: 10px;
+    font-size: 1.2em;
+}
+
+#form button {
+    background-color: #A86550;
+    animation-name: shop-button-hover-out;
+    animation-duration: 0.2s;
+    cursor: pointer;
+    color:white;
+    height: 40px;
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+}
+
+#form button:hover {
+    animation-name: shop-button-hover-in;
+    animation-duration: 0.2s;
+    background-color: #D0B0A6;
+}
