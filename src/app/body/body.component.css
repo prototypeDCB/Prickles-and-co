@@ -29,7 +29,7 @@
 }
 
 #company-name-container {
-    background: url("../../assets/images/background-flowers.png") no-repeat center center fixed;
+    background: url("assets/images/background-flowers.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -166,14 +166,14 @@
 }
 
 #cacti-container {
-    background-image: url("../../assets/images/product-cactii.png");
+    background-image: url("assets/images/product-cactii.png");
 }
 #plants-container {
-    background-image: url("../../assets/images/product-plants.png");
+    background-image: url("assets/images/product-plants.png");
 }
 
 #socculents-container {
-    background-image: url("../../assets/images/product-succulents.png");
+    background-image: url("assets/images/product-succulents.png");
 }
 
 #about-scroll-marker {
@@ -216,7 +216,7 @@
 }
 
 #pic1 {
-    background-image: url("../../assets/images/banner1.png");
+    background-image: url("assets/images/banner1.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -225,7 +225,7 @@
     width: 22.5vw;
 }
 #pic2 {
-    background-image: url("../../assets/images/banner2.png");
+    background-image: url("assets/images/banner2.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -235,7 +235,7 @@
 }
 
 #pic3 {
-    background-image: url("../../assets/images/banner3.png");
+    background-image: url("assets/images/banner3.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -267,7 +267,7 @@
 }
 
 #requests-container {
-    background: url("../../assets/images/background-flowers-2.png") no-repeat center center fixed;
+    background: url("assets/images/background-flowers-2.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

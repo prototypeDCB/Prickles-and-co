@@ -12,9 +12,9 @@ export class ProductFetchService {
     static readonly NUM_CACTI = 6;
     static readonly NUM_PLANTS = 6;
     static readonly NUM_SUCCULENTS = 6;
-    static readonly PATH_CACTI = "../../assets/images/plants/cacti/cactus";
-    static readonly PATH_PLANTS = "../../assets/images/plants/plants/plant";
-    static readonly PATH_SUCCULENTS = "../../assets/images/plants/succulents/succulent";
+    static readonly PATH_CACTI = "assets/images/plants/cacti/cactus";
+    static readonly PATH_PLANTS = "assets/images/plants/plants/plant";
+    static readonly PATH_SUCCULENTS = "assets/images/plants/succulents/succulent";
 
     static readonly TITLE_CACTI = "HAVE YOURSELF A CACTUS";
     static readonly TITLE_PLANTS = "THE WORLD NEEDS MORE PLANTS";
@@ -36,7 +36,7 @@ export class ProductFetchService {
     static readonly BACKGROUND_STYLING_CACTI = {
         'background-repeat': 'no-repeat',
         'background-position': 'center center',
-        'background-image': 'url("../../assets/images/plants/cacti/cactus-background.png")',
+        'background-image': 'url("assets/images/plants/cacti/cactus-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
@@ -45,7 +45,7 @@ export class ProductFetchService {
     static readonly BACKGROUND_STYLING_PLANTS = {
         'background-repeat': 'no-repeat',
         'background-position': 'center center',
-        'background-image': 'url("../../assets/images/plants/plants/plant-background.png")',
+        'background-image': 'url("assets/images/plants/plants/plant-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
@@ -54,7 +54,7 @@ export class ProductFetchService {
     static readonly BACKGROUND_STYLING_SUCCULENTS = {
         'background-repeat': 'no-repeat',
         'background-position': 'center center',
-        'background-image': 'url("../../assets/images/plants/succulents/succulent-background.png")',
+        'background-image': 'url("assets/images/plants/succulents/succulent-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
@@ -63,7 +63,7 @@ export class ProductFetchService {
     static readonly BACKGROUND_STYLING_ALL = {
         'background-repeat': 'no-repeat',
         'background-position': 'center center',
-        'background-image': 'url("../../assets/images/plants/all/all-background.png")',
+        'background-image': 'url("assets/images/plants/all/all-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
