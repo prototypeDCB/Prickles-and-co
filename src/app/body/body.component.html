@@ -1,96 +1,108 @@
-<div id="body">
-    <div id="company-name-container">
-        <div id="company-name">
-            <div id="company-logo-container">
-                <div class="logo-text">
-                    <span>ESTB</span>
-                    <div></div>
+<div id="body-container">
+    <div id="body">
+        <div id="company-name-container">
+            <div id="company-name">
+                <div id="company-logo-container">
+                    <div class="logo-text">
+                        <span>ESTB</span>
+                        <div></div>
+                    </div>
+                    <div id="company-logo"><img src="../../assets/images/logo.png"></div>
+                    <div class="logo-text">
+                        <span>2023</span>
+                        <div></div>
+                    </div>
                 </div>
-                <div id="company-logo"><img src="../../assets/images/logo.png"></div>
-                <div class="logo-text">
-                    <span>2023</span>
-                    <div></div>
-                </div>
-            </div>
 
-            <div id="company-name-title"><span>PRICKLES & CO</span></div>
+                <div id="company-name-title"><span>PRICKLES & CO</span></div>
 
-            <div id="company-name-subtitle"><span>BRING NATURE INDOORS</span></div>
+                <div id="company-name-subtitle"><span>BRING NATURE INDOORS</span></div>
 
-            <div id="shop-button" class=button (click)="loadShop(ShopType.All)"><span>Shop now</span></div>
-        </div>
-    </div>
-
-    <div id="product-categories">
-        <div id="cacti-container" class="product">
-            <div class="product-title"><span>CACTI</span></div>
-            <div class="underline-separator"></div>
-            <div id="shop-collection" class="button" (click)="loadShop(ShopType.Cacti)">Shop Collection</div>
-        </div>
-
-        <div id="plants-container" class="product">
-            <div class="product-title"><span>PLANTS</span></div>
-            <div class="underline-separator"></div>
-            <div id="shop-collection" class="button" (click)="loadShop(ShopType.Plants)">Shop Collection</div>
-        </div>
-
-        <div id="socculents-container" class="product">
-            <div class="product-title"><span>SUCCULENTS</span></div>
-            <div class="underline-separator"></div>
-            <div id="shop-collection" class="button" (click)="loadShop(ShopType.Succulents)">Shop Collection</div>
-        </div>
-    </div>
-    <div id="about-scroll-marker"></div>
-
-    <div id="about">
-        <div id="about-us">
-            <div id="about-us-title"><span>ABOUT US</span></div>
-            <div class="underline-separator"></div>
-            <div id="about-us-paragraphs">
-                <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.</p>
-                <p>This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide.</p>
+                <div id="shop-button" class=button (click)="loadShop(ShopType.All)"><span>Shop now</span></div>
             </div>
         </div>
-        <div id="pic12"><!--<img src="../../assets/images/banner1.png">-->
-            <div id="pic1"></div>
-            <div id="pic2"></div>
-        </div>
-        <div id="pic3"><!--<img src="../../assets/images/banner3.png">--></div>
 
-        <div id="about-buy-now">
-            <div id="about-buy-now-text-container"><span>BUY ONLINE NOW & GET 10% OFF !</span></div>
-            <div class="button" (click)="loadShop(ShopType.All)">Shop Now</div>
+        <div id="product-categories">
+            <div id="cacti-container" class="product">
+                <div class="product-title"><span>CACTI</span></div>
+                <div class="underline-separator"></div>
+                <div id="shop-collection" class="button" (click)="loadShop(ShopType.Cacti)">Shop Collection</div>
+            </div>
+
+            <div id="plants-container" class="product">
+                <div class="product-title"><span>PLANTS</span></div>
+                <div class="underline-separator"></div>
+                <div id="shop-collection" class="button" (click)="loadShop(ShopType.Plants)">Shop Collection</div>
+            </div>
+
+            <div id="socculents-container" class="product">
+                <div class="product-title"><span>SUCCULENTS</span></div>
+                <div class="underline-separator"></div>
+                <div id="shop-collection" class="button" (click)="loadShop(ShopType.Succulents)">Shop Collection</div>
+            </div>
         </div>
-    </div>
-    <div id="requests-container">
-        <div id="requests">
+        <div id="about-scroll-marker"></div>
+
+        <div id="about">
+            <div id="about-us">
+                <div id="about-us-title"><span>ABOUT US</span></div>
+                <div class="underline-separator"></div>
+                <div id="about-us-paragraphs">
+                    <p>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text”
+                        or double click me to add your own content and make changes to the font. Feel free to drag and
+                        drop me anywhere you like on your page. I’m a great place for you to tell a story and let your
+                        users know a little more about you.</p>
+                    <p>This is a great space to write long text about your company and your services. You can use this
+                        space to go into a little more detail about your company. Talk about your team and what services
+                        you provide.</p>
+                </div>
+            </div>
+            <div id="pic12">
+                <!--<img src="../../assets/images/banner1.png">-->
+                <div id="pic1"></div>
+                <div id="pic2"></div>
+            </div>
+            <div id="pic3">
+                <!--<img src="../../assets/images/banner3.png">-->
+            </div>
+
+            <div id="about-buy-now">
+                <div id="about-buy-now-text-container"><span>BUY ONLINE NOW & GET 10% OFF !</span></div>
+                <div class="button" (click)="loadShop(ShopType.All)">Shop Now</div>
+            </div>
+        </div>
+        <div id="requests-container">
             <div id="requests-marker"></div>
-            <div id="requests-title"><span>FOR SPECIAL REQUESTS AND ORDERS</span></div>
-            <div class="underline-separator"></div>
+            <div id="requests">
+                
+                <div id="requests-title"><span>FOR SPECIAL REQUESTS AND ORDERS</span></div>
+                <div class="underline-separator"></div>
 
-            <form id="form">
-                <div id="form-name-email-container">
-                    <div id="form-name-container" class="form-container">
-                        <label for="form-name">Enter your name *</label>
-                        <input type="text" id="form-name" name="form-name" value required placeholder="Name">
-                    </div>
-                    
-                    <div id="form-email-container" class="form-container">
-                        <label for="form-email">Enter your email *</label>
-                        <input type="email" id="form-email" name="form-email" value required placeholder="Email">
-                    </div>
-                </div>
-                <div id="form-telephone-container" class="form-container">
-                    <label for="form-tel">Enter your phone *</label>
-                    <input type="tel" id="form-tel" name="form-tel">
-                </div>
-                <div id="form-text-area-container" class="form-container">
-                    <label for="form-textarea">Enter your message here</label>
-                    <textarea id="form-textarea" placeholder="Message" rows="7"></textarea>
-                </div>
+                <form id="form">
+                    <div id="form-name-email-container">
+                        <div id="form-name-container" class="form-container">
+                            <label for="form-name">Enter your name *</label>
+                            <input type="text" id="form-name" name="form-name" value required placeholder="Name">
+                        </div>
 
-                <button type="submit">Send</button>
-            </form>
+                        <div id="form-email-container" class="form-container">
+                            <label for="form-email">Enter your email *</label>
+                            <input type="email" id="form-email" name="form-email" value required placeholder="Email">
+                        </div>
+                    </div>
+                    <div id="form-telephone-container" class="form-container">
+                        <label for="form-tel">Enter your phone *</label>
+                        <input type="tel" id="form-tel" name="form-tel">
+                    </div>
+                    <div id="form-text-area-container" class="form-container">
+                        <label for="form-textarea">Enter your message here</label>
+                        <textarea id="form-textarea" placeholder="Message" rows="7"></textarea>
+                    </div>
+
+                    <button type="submit">Send</button>
+                </form>
+            </div>
         </div>
     </div>
+
 </div>

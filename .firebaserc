@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "prickes-and-co": {
+      "hosting": {
+        "prickles-and-co": [
+          "prickes-and-co"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "prickes-and-co"
+  }
+}

@@ -39,32 +39,36 @@ export class AppComponent {
 
     }
 
-    isCacti() {
+    isCacti(): boolean {
         return this.productCategory === ShopType.Cacti;
     }
 
-    isPlants() {
+    isPlants(): boolean {
         return this.productCategory === ShopType.Plants;
     }
 
-    isSucculents() {
+    isSucculents(): boolean {
         return this.productCategory === ShopType.Succulents;
     }
 
-    isAll() {
+    isAll(): boolean {
         return this.productCategory === ShopType.All;
     }
 
-    isProductType() {
+    isProductType(): boolean {
         return (this.isCacti() || this.isPlants() || this.isSucculents() || this.isAll());
     }
 
-    isFaq() {
+    isFaq(): boolean {
         return this.productCategory === ShopType.FAQ;
     }
 
-    isShippingOrPrivacy() {
+    isShippingOrPrivacy(): boolean {
         return this.productCategory === ShopType.Shipping
             || this.productCategory === ShopType.Privacy;
+    }
+
+    isCheckout(){
+        return this.productCategory === ShopType.Checkout;
     }
 }

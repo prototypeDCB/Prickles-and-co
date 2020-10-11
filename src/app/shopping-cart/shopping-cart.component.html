@@ -1,33 +1,43 @@
 <div id="shopping-container">
-    <div id="left-shadow" (click)="toggleCart()"></div>
-    <div id="right-shopping">
-        <div id="hide-icon"><span (click)="toggleCart()">></span></div>
-        <div id="title"><span>CART</span></div>
-        <div id="items-container">
-            <div *ngIf="cartContents.length <= 0" id="empty-placeholder"><span>Cart is empty</span></div>
-            <div *ngFor="let item of cartContents; let i = index" class="item" (mouseenter)="showRemoveItem($event.target)" (mouseleave)="hideRemoveItem($event.target)">
-                <div *ngIf="i > 0" class="item-separator"></div>
-                <div class="item-bottom-container">
-                    <div class="item-image"><img src={{item.product.imageUrl}}></div>
-                    <div class="item-right-content">
-                        <div class="item-description"><span>{{item.product.description}}</span></div>
-                        <div class="item-price"><span>{{item.product.price | currency }}</span></div>
-                        <div class="quantity-selector">
-                            <button [id]="'decrease'+i" class="change-quantity" (click)="decreaseQuantity(item)" [disabled]="item.quantity <= 1"><span>-</span></button>
-                            <input type="tel" class="input-quantity"[id]="item.product.id + '-quantity'" [name]= "item.product.id + '-quantity'" min="1" max="9999" value="{{item.quantity}}" (keyup.enter)="checkQuantity($event, item)" (blur)="checkQuantity($event, item)">
-                            <button [id]="'increase'+i" class="change-quantity" (click)="increaseQuantity(item)" [disabled]="item.quantity >= 9999"><span>+</span></button>
+    <div id="left-shadow" (click)="toggleCart()"></div> <!-- Needed just to click it-->
+    <div id="right-shopping-container">
+        <div id="right-shopping">
+            <div id="hide-icon"><span (click)="toggleCart()">></span></div>
+            <div id="title"><span>CART</span></div>
+            <div id="items-container">
+                <div *ngIf="cartContents.length <= 0" id="empty-placeholder"><span>Cart is empty</span></div>
+                <div *ngFor="let item of cartContents; let i = index" class="item"
+                    (mouseenter)="showRemoveItem($event.target)" (mouseleave)="hideRemoveItem($event.target)">
+                    <div class="item-container">
+                        <div class="remove-item" (click)="removeItem(item)">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                <path d="M17 6L12.001 10.999 7 6 6 7 11.001 11.999 6 17 7 18 12.001 12.999 17 18 18 17 13 11.999 18 7z"></path>
+                            </svg>
+                        </div>
+                        <div class="item-image"><img src={{item.product.imageUrl}}></div>
+                        <div class="item-right-content">
+                            <div class="item-description"><span>{{item.product.description}}</span></div>
+                            <div class="item-price"><span>{{item.product.price | currency }}</span></div>
+                            <div class="quantity-selector">
+                                <button [id]="'decrease'+i" class="change-quantity" (click)="decreaseQuantity(item)"
+                                    [disabled]="item.quantity <= 1"><span>-</span></button>
+                                <input type="tel" class="input-quantity" [id]="item.product.id + '-quantity'"
+                                    [name]="item.product.id + '-quantity'" min="1" max="9999" value="{{item.quantity}}"
+                                    (keyup.enter)="checkQuantity($event, item)" (blur)="checkQuantity($event, item)">
+                                <button [id]="'increase'+i" class="change-quantity" (click)="increaseQuantity(item)"
+                                    [disabled]="item.quantity >= 9999"><span>+</span></button>
+                            </div>
                         </div>
                     </div>
+                    <div *ngIf="i < cartContents.length - 1" class="item-separator"></div>
                 </div>
-                <div class="remove-item" (click)="removeItem(item)"><span>X</span></div>
+            </div>
+            <div *ngIf="cartContents.length > 0" id="bottom-container">
+                <div id="subtotal-title"><span>Subtotal</span></div>
+                <div id="subtotal-price">{{this.productFetch.getCartTotalPrice() | currency}}</div>
+                <div id="separator"></div>
+                <div id="view-cart" (click)="loadShop(); toggleCart()"><span>View Cart</span></div>
             </div>
         </div>
-        <div *ngIf="cartContents.length > 0" id="bottom-container">
-            <div id="subtotal-title"><span>Subtotal</span></div>
-            <div id="subtotal-price">{{this.productFetch.getCartTotalPrice() | currency}}</div>
-            <div id="separator"></div>
-            <div id="view-cart"><span>View Cart</span></div>
-        </div>
-       
     </div>
 </div>

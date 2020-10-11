@@ -4,20 +4,30 @@
     border-width: 1px;*/
 }
 
-#grid-container {
+#product-page-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color:  rgb(237,237,238);
+
+}
+#product-page {
     font-family: "Lato", "Nunito Sans", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color:  rgb(237,237,238);
-    padding: 0 5vw 20px 5vw;
+    padding: 0 0 20px 0;
+    width: 90vw;
     transition: opacity 0.5s ease;
     opacity: 0;
 }
 
 #title-container {
     height: 95vh;
+    background-attachment: fixed;
 }
 
 #title-filter {
@@ -32,6 +42,9 @@
     text-align: center;
 }
 #title {
+    margin-top: auto;
+    position: relative;
+    top: 50px;
     width: 75%;
     font-size: 4.5em;
     text-align: center;
@@ -40,22 +53,25 @@
 
 #back-to-all {
     position: absolute;
-    font-weight: 200;
+    font-weight: 400;
     cursor: pointer;
     top: 80px;
 }
 
 #back-to-all:hover {
-    font-weight: 400;
+    font-weight: 700;
 }
 
 #subtitle {
     width: 60%;
     margin-top: 10px;
+    position: relative;
+    top: 50px;
 }
 
 #scroll-to-products{
-    position: absolute;
+    margin-top: auto;
+    margin-bottom: 70px;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -69,7 +85,7 @@
 
 #scroll-marker {
     position: absolute;
-    bottom: 100px;
+    top: calc(95vh - 60px);
 }
 
 #category-name {
@@ -85,6 +101,11 @@
     justify-content: space-between;
 }
 
+
+app-product {
+    width: 27vw;
+}
+
 /*
 
 background: url("../../assets/images/background-flowers.png") no-repeat center center fixed;
@@ -94,3 +115,68 @@ background: url("../../assets/images/background-flowers.png") no-repeat center c
     background-size: cover;
     
 */
+
+
+@media only screen and (max-width: 1080px){
+    
+}
+
+@media only screen and (max-width: 810px) {
+
+    #product-page {
+        width: 100vw;
+    }
+    #title-container {
+        background-attachment: scroll;
+    }
+    #title-container {
+        height: 100vh;
+    }
+
+    #scroll-marker {
+        bottom: 60px;
+    }
+
+    #scroll-to-products{
+        margin-bottom: 80px;
+    }
+
+    #title-container {
+        width: 100vw;
+    }
+    #title {
+        width: 90vw;
+        font-size: 3em;
+    }
+
+    #subtitle {
+        width: 80vw;
+    }
+    #grid-items {
+        margin: 0 20px;
+    }
+    app-product {
+        width: 45vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #title {
+        font-size: 2.5em;
+    }    
+
+    app-product {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #category-name {
+        font-size: 2em;
+        letter-spacing: 0em;
+    }
+
+    #scroll-marker {
+        top: calc(100vh - 60px);
+    }
+}

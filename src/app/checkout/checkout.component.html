@@ -1,0 +1,171 @@
+<div id="load-marker"></div>
+<div id="checkout-notice-shadow" (click)="disableNotice()"></div>
+<div id="checkout-notice">
+    <div id="close-notice-x" (click)="disableNotice()">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path d="M17 6L12.001 10.999 7 6 6 7 11.001 11.999 6 17 7 18 12.001 12.999 17 18 18 17 13 11.999 18 7z"></path>
+            </svg>
+    </div>
+    <div id="checkout-notice-warning">
+        <svg viewBox="0 0 15 15" fill="currentColor" width="15" height="15">
+            <g fill="currentColor" fill-rule="evenodd">
+                <path fill="currentColor"
+                    d="M7.5 1a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0-1a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15z"
+                    fill-rule="nonzero"></path>
+                <path fill="currentColor" d="M7.982 9h-.964V4h.964z"></path>
+                <path fill="currentColor" d="M8 11H7v-1h1z"></path>
+            </g>
+        </svg>
+    </div>
+    
+    <div id="checkout-notice-title"><span>We are not able to accept online payments yet</span></div>
+    <div id="checkout-notice-subtitle"><span>Please contact us to complete your purchase. Thanks</span></div>
+    <div id="close-notice-text" (click)="disableNotice()"><span>Got it</span></div>
+</div>
+<div id="checkout-container">
+    <div id="checkout">
+        <div *ngIf="cartContents.length > 0" id="top-checkout-button" class="checkout-button" (click)="enableNotice()">
+            <span>
+                <svg viewBox="0 0 11 14" fill="currentColor" width="11" height="14">
+                    <g id="Page-1" stroke="none" fill="none" stroke-width="1" fill-rule="evenodd">
+                        <g id="Group" fill="currentColor">
+                            <path
+                                d="M0,12.7905281 C0,13.348044 0.444836974,13.8 0.995577499,13.8 L10.0044225,13.8 C10.5542648,13.8 11,13.3515084 11,12.7905281 L11,6.00947189 C11,5.45195596 10.555163,5 10.0044225,5 L0.995577499,5 C0.445735229,5 0,5.44849157 0,6.00947189 L0,12.7905281 Z"
+                                id="Stroke-1"></path>
+                            <path
+                                d="M9.5,5 L9.5,4.07597662 C9.5,2.08610548 7.69574843,0.5 5.5,0.5 C3.30425157,0.5 1.5,2.08610548 1.5,4.07597662 L1.5,5 L2.5,5 L2.5,4.07597662 C2.5,2.66911962 3.82991528,1.5 5.5,1.5 C7.17008472,1.5 8.5,2.66911962 8.5,4.07597662 L8.5,5 L9.5,5 Z"
+                                id="Stroke-3" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span>Checkout</span>
+        </div>
+
+
+        <div id="my-cart">
+            <div id="my-cart-title" class="title"><span>My Cart</span></div>
+            <div class="checkout-separator"></div>
+            <div id="cart-contents">
+                <div id="checkout-placeholder" *ngIf="cartContents.length <= 0">
+                    <span id="checkout-placeholder-text">There are no items in the cart</span><br>
+                    <span id="button-continue-shopping" (click)="loadShop()">Continue shopping</span>
+                    <div class="checkout-separator"></div>
+                </div>
+                <div *ngFor="let item of cartContents; let i = index" [id]="'item' + i" class="checkout-item">
+                    <div class="checkout-item-contents">
+                        <div class="checkout-item-image"><img src={{item.product.imageUrl}}></div>
+                        <div class="checkout-item-details">
+                            <span>{{item.product.description}}</span>
+                            <span>{{item.product.price | currency}}</span>
+                            <div class="checkout-quantity-selector">
+                                <button [id]="'decrease'+i" class="checkout-change-quantity"
+                                    (click)="decreaseQuantity(item)"
+                                    [disabled]="item.quantity <= 1"><span>-</span></button>
+                                <input type="tel" class="checkout-input-quantity"
+                                    [id]="item.product.id + '-checkout-quantity'" [name]="item.product.id + '-quantity'"
+                                    min="1" max="9999" value="{{item.quantity}}"
+                                    (keyup.enter)="checkQuantity($event, item)" (blur)="checkQuantity($event, item)">
+                                <button [id]="'increase'+i" class="checkout-change-quantity"
+                                    (click)="increaseQuantity(item)"
+                                    [disabled]="item.quantity >= 9999"><span>+</span></button>
+                            </div>
+                        </div>
+                        <div class="total-product-price">
+                            <span>{{(item.product.price * item.quantity) | currency}}</span>
+                        </div>
+                        <div class="checkout-item-remove" (click)="removeItem(item, i)">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24" (click)="removeItem(item, i)">
+                                <path d="M17 6L12.001 10.999 7 6 6 7 11.001 11.999 6 17 7 18 12.001 12.999 17 18 18 17 13 11.999 18 7z"></path>
+                            </svg>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="checkout-separator"></div>
+                </div>
+
+            </div>
+            <div *ngIf="cartContents.length > 0" id="promo-code-container">
+                <div id="promo-code-title" class="code-note-title" (click)="togglePromoCode()">
+                    <span>
+                        <svg viewBox="0 0 14 16" fill="currentColor" width="14" height="16" class="_3IcIh">
+                            <g id="final-cart" stroke="none" fill="none" stroke-width="1" fill-rule="evenodd">
+                                <g id="general-layout" transform="translate(-515 -839)" fill="currentColor">
+                                    <g id="coupon-icon" transform="rotate(30 -1300.653 1393.349)">
+                                        <path
+                                            d="M1,14.0046024 C0.999339408,13.9996515 9.00460243,14 9.00460243,14 C8.99965149,14.0006606 9,5.41421356 9,5.41421356 L5,1.41421356 L1,5.41421356 L1,14.0046024 Z M-2.72848411e-12,5 L5,-4.66116035e-12 L10,5 L10,14.0046024 C10,14.5543453 9.5443356,15 9.00460243,15 L0.995397568,15 C0.445654671,15 -2.72848411e-12,14.5443356 -2.72848411e-12,14.0046024 L-2.72848411e-12,5 Z"
+                                            id="Rectangle-6" fill-rule="nonzero"></path>
+                                        <circle id="Oval-2" cx="5" cy="5" r="1"></circle>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </span>
+                    <span>Enter a promo code</span>
+                </div>
+
+                <div id="promo-code-input-container">
+                    <input type="text" maxlength="20" placeholder="Enter a promo code" style="text-overflow: clip">
+                    <button type="submit" tabindex="0">Apply</button>
+                </div>
+            </div>
+
+            <div *ngIf="cartContents.length > 0" id="add-note-container">
+                <div id="add-note-title" class="code-note-title" (click)="toggleAddNote()">
+                    <span>
+                        <svg viewBox="0 0 12 13" fill="currentColor" width="12" height="13" class="_3IcIh">
+                            <g id="final-cart" stroke="none" fill="none" stroke-width="1" fill-rule="evenodd">
+                                <g id="general-layout" transform="translate(-515 -882)">
+                                    <g id="print-icon" transform="translate(515 882)">
+                                        <path
+                                            d="M0.5,0.5 L8.27826634,0.5 L11.5,3.73740249 L11.5,12.5 L0.5,12.5 L0.5,0.5 Z"
+                                            id="Rectangle-4-Copy" stroke="currentColor"></path>
+                                        <path d="M10.7928932,3.5 L8.5,3.5 L8.5,1.20710678 L10.7928932,3.5 Z"
+                                            id="Rectangle-10" stroke="currentColor"></path>
+                                        <path id="Rectangle-18" fill="currentColor" d="M3 3H6V4H3z"></path>
+                                        <path id="Rectangle-18-Copy" fill="currentColor" d="M3 6H9V7H3z"></path>
+                                        <path id="Rectangle-18-Copy-2" fill="currentColor" d="M3 9H9V10H3z"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </span>
+                    <span>Add a note</span>
+                </div>
+                <div id="add-note-input">
+                    <textarea maxlength="250" placeholder="Instructions? Special requests? Add them here"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="cartContents.length > 0" id="order-summary">
+            <div id="order-summary-title" class="title"><span>Order Summary</span></div>
+            <div class="checkout-separator"></div>
+            <div id="checkout-subtotal"><span>Subtotal</span><span
+                    style="float: right;">{{this.productFetch.getCartTotalPrice() | currency}}</span></div>
+            <div id="checkout-estimate-shipping"><span>Estimate shipping</span></div>
+            <div class="checkout-separator"></div>
+            <div id="checkout-total"><span>Total</span><span
+                    style="float: right;">{{this.productFetch.getCartTotalPrice() | currency}}</span></div>
+            <div id="summary-checkout-button" class="checkout-button" (click)="enableNotice()">
+                <span>
+                    <svg viewBox="0 0 11 14" fill="currentColor" width="11" height="14">
+                        <g id="Page-1" stroke="none" fill="none" stroke-width="1" fill-rule="evenodd">
+                            <g id="Group" fill="currentColor">
+                                <path
+                                    d="M0,12.7905281 C0,13.348044 0.444836974,13.8 0.995577499,13.8 L10.0044225,13.8 C10.5542648,13.8 11,13.3515084 11,12.7905281 L11,6.00947189 C11,5.45195596 10.555163,5 10.0044225,5 L0.995577499,5 C0.445735229,5 0,5.44849157 0,6.00947189 L0,12.7905281 Z"
+                                    id="Stroke-1"></path>
+                                <path
+                                    d="M9.5,5 L9.5,4.07597662 C9.5,2.08610548 7.69574843,0.5 5.5,0.5 C3.30425157,0.5 1.5,2.08610548 1.5,4.07597662 L1.5,5 L2.5,5 L2.5,4.07597662 C2.5,2.66911962 3.82991528,1.5 5.5,1.5 C7.17008472,1.5 8.5,2.66911962 8.5,4.07597662 L8.5,5 L9.5,5 Z"
+                                    id="Stroke-3" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </svg>
+                </span>
+                <span>Checkout</span>
+            </div>
+        </div>
+    </div>
+</div>

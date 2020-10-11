@@ -23,6 +23,12 @@ export class FooterComponent implements OnInit {
             next: (shopType) => {
                 let element = document.querySelector("body");
                 element.scrollIntoView({ behavior: 'smooth' });
+                let background: HTMLElement = document.querySelector("#footer-parent");
+                if ( this.isWhiteBackground(shopType) ) {
+                    background.style.backgroundColor = "white";
+                } else {
+                    background.style.backgroundColor = "rgb(237,237,238)";
+                }
             }
         });
     }
@@ -33,6 +39,13 @@ export class FooterComponent implements OnInit {
 
     ngOnDestroy() {
         this.shopTypeSubscription.unsubscribe();
+    }
+
+    isWhiteBackground(shopType: ShopType): boolean {
+        return shopType === ShopType.Checkout
+            || shopType === ShopType.FAQ
+            || shopType === ShopType.Privacy
+            || shopType === ShopType.Shipping;
     }
 
 }

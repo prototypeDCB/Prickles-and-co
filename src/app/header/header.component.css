@@ -9,75 +9,122 @@
 }
 
 * {
-    box-shadow: inset 0px 0px 0px 1px red;
+    /*box-shadow: inset 0px 0px 0px 1px red;*/
     /*border-style: dashed;
     border-width: 1px;*/
 }
 
-#header {
+#header-container {
     position: fixed;
     top: 0;
-    left:0;
-    height: 60px;
-    width: 100%;
+    left: 0;
+    min-height: 60px;
+    width: 100vw;
+    z-index: 10;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     background-color: rgb(237,237,238);
+}
+
+#header {
+    height: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90vw;
     font-family: "Lato", "Nunito Sans", sans-serif;
     color: #A86550;
-    z-index: 10;
+    padding: 0 5vw 0 5vw;
 }
 
-#left-side{
-    display: flex;
-    justify-content: flex-start;
-    position: absolute;
-    left: 5%;
-    width: 50%;
-    height:100%;
-    
-    
-}
-
-#right-side{
-    display: flex;
-    position: absolute;
-    justify-content: flex-end;
-    right: 5%;
-    width: 40%;
-    height:100%;
-    
-}
 
 #logo {
-    height: 100%;
-    width: 8em;
-    /*color: #A86550;*/
+    height: inherit;
     font-size: 1.4em;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 0 0 auto;
+    transition: all 0.5s ease;
 }
 #logo:hover {
-    animation-name: logo-color-change;
-    animation-duration: 0.5s;
+    transition: all 0.5s ease;
     color: black;
     font-weight: 700;
     cursor: pointer;
 }
 
+#menu-button {
+    display: none;
+    cursor: pointer;
+    align-items: center;
+    z-index: 25;
+    height: 50px;
+    width: 50px;
+}
+
+#menu-button-burger {
+    width: 40px;
+    height: 6px;
+    background: #A86550;
+    border-radius: 5px;
+    transition: all .5s ease-in-out;
+}
+#menu-button-burger::before, 
+#menu-button-burger::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background: #A86550;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+#menu-button-burger::before {
+    transform: translateY(-10px);
+}
+
+#menu-button-burger::after {
+    transform: translateY(10px);
+}
+/*ANIMATION*/
+#menu-button.open #menu-button-burger {
+    transform: translateX(-50px);
+    background: transparent;
+}
+
+#menu-button.open #menu-button-burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+#menu-button.open #menu-button-burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+
 #menu {
    display: inline-flex;
    justify-content: space-evenly;
    align-items: center;
-   margin: 0 0 0 5em;
+   flex: 0 0 400px;
+   height: 60px;
 }
 
 #menu span {
     padding: 0 15px 0 15px;
     font-weight: 300;
     cursor: pointer;
+    transition: all 0.5s ease;
 
+}
+
+
+#menu span:hover {
+    color: black;
 }
 
 #shop-dropdown {
@@ -94,11 +141,11 @@
 
 #shop-dropdown li {
     cursor: pointer;
+    transition: all 0.5s ease;
+
 }
 
 #shop-dropdown li:hover {
-    animation-name: menu-item-color-change;
-    animation-duration: 0.3s;
     color: black;
 }
 
@@ -114,39 +161,46 @@
 }
 
 #message {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1;
     font-weight: 700;
     font-size: 1.2em;
-}
-
-#menu span:hover {
-    animation-name: menu-item-color-change;
-    animation-duration: 0.3s;
-    color: black;
-}
-
-#avatar {
-    margin: 0 0 0 2em;
+    flex-grow: 3;
 }
 
 #login {
-    margin: 0 0 0 0.5em;
+    display: flex;
+    align-items: center;
 }
 
 #shopping {
-    margin: 0 0 0 2em;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
 }
 
-#shopping > div {
-    position: absolute;
+#shopping svg {
+    fill: #A86550;
     color: white;
-    top: 27px;
-    right: 17px;
+}
+
+#amount-items {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     font-weight: 900;
+    width: 100%;
+    height: 100%;
+    bottom: 100%;
+    left: -4px;
 }
 
 img {
-    max-width: 100%;
+    max-width: 100;
     max-height: 100%;
 }
 
@@ -155,7 +209,122 @@ img {
     width: 40px;
 }
 
-.header-element {
+#login-container {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
+    flex: 0 0 auto;
+    margin-left: 20px;
 }
+
+#header-shopping-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 0 0 auto;
+    margin-left: 20px;
+}
+
+#mobile-menu {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    top: 100vh;
+    left: 0;
+    background-color: rgb(237,237,238);
+    z-index: 20;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    color: #A86550;
+    font-family: "Lato", "Nunito Sans", sans-serif;
+    font-size: 2em;
+}
+
+#mobile-menu ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+#mobile-menu li {
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+#mobile-main-list {
+    margin-bottom: auto;
+    width: 50%;
+}
+
+#mobile-login-icon {
+    width: 50px;
+    height: 50px;
+}
+#mobile-login-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+#mobile-login{
+    margin-left: 10px;
+}
+
+#mobile-shopping-list {
+    max-height: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+
+#mobile-shopping-button span {
+    position: absolute;
+    margin-left: 30px;
+    width: 5px;
+}
+
+@media only screen and (max-width: 1080px){
+    #message {
+        display: none;
+    }
+
+    #login-container {
+        flex-grow: 3;
+    }
+}
+
+@media only screen and (max-width: 810px){
+    #logo {
+        order: 2;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #menu-button {
+        display: flex;
+        order: 1;
+    }
+    #login-container {
+        display: none;
+    }
+    #header-shopping-container {
+        order: 3;
+    }
+    #menu {
+        display: none;
+    }
+    #header {
+        width: 100vw;
+    }
+
+}
+
+

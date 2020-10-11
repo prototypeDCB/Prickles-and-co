@@ -8,5 +8,6 @@ export enum ShopType {
     FAQ = 6,
     Contact = 7,
     Shipping = 8,
-    Privacy = 9
+    Privacy = 9,
+    Checkout = 10
 }

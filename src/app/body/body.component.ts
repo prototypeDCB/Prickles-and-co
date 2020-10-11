@@ -28,6 +28,7 @@ export class BodyComponent implements OnInit {
                 } else if (shopType === ShopType.Contact){
                     let element = document.getElementById("requests-marker");
                     element.scrollIntoView({ behavior: 'smooth' });
+                    console.log(element);
                 }else{
                     let element = document.querySelector("body");
                     element.scrollIntoView({ behavior: 'smooth' });

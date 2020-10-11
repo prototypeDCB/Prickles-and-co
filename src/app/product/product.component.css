@@ -20,13 +20,13 @@
     flex-direction: column;
     align-items: center;
     font-family: "Lato", "Nunito Sans", sans-serif;
-    width: 27vw;
+    width: 100%;
     color: #A86550;
     margin-top: 50px;
 
 }
 #product-image {
-
+    width: 100%;
 }
 
 #product-image-hover {
@@ -46,15 +46,12 @@ img{
     align-items: center;
     justify-content: center;
     background-color: #A86550;
-    animation-name: buy-button-hover-out;
-    animation-duration: 0.2s;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
     color:white;
 }
 
 #buy:hover {
-    animation-name: buy-button-hover-in;
-    animation-duration: 0.2s;
     background-color: #D0B0A6;
 }
 

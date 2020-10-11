@@ -5,20 +5,32 @@
 }
 
 #shipping-container {
-    background-color:  rgb(237,237,238);
+    background-color: white;
+    /*background-color:  rgb(237,237,238);*/
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
 }
 
 #shipping {
-    margin: 0 5vw 0 5vw;
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: white;
+    /*background-color:  rgb(237,237,238);*/
     font-family: "Lato", "Nunito Sans", sans-serif;
     color:  #A86550;
+    padding: 5% 0 10% 0;
 }
 
 #sections {
     display: flex;
     flex-direction: column;
-    padding: 200px 300px 200px 300px;
+    width: 70vw;
 }
 
 .section {
@@ -33,6 +45,7 @@
     justify-content: center;
     letter-spacing: 0.45em;
     font-size: 1.2em;
+    text-align: center;
 }
 
 .section-content {
@@ -44,4 +57,25 @@
     width: 1.5em;
     height: 5px;
     background-color: #A86550;
+}
+
+
+@media only screen and (max-width: 810px) {
+    #shipping {
+        width: 100%;
+    }
+
+    #sections {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #sections {
+        width: 90vw;
+    }
+
+    #shipping {
+        padding-bottom: 20%;
+    }
 }

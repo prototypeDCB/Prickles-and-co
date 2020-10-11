@@ -13,21 +13,10 @@ import { Subscription, BehaviorSubject } from 'rxjs';
 export class ProductGridComponent implements OnInit {
 
     ShopType = ShopType;
-    //@Output() readyEmitter = new EventEmitter<string>();
     shopTypeEmitter: BehaviorSubject<ShopType>;
     shopTypeSubscription: Subscription;
     productData: ProductData;
-    //@Input() shopType: ShopType;
-    //@Input() shopType: ShopType;
     shopType: ShopType;
-
-    /*get shopType(): ShopType {return this._shopType;}
-    set shopType(shopType: ShopType){
-        this._shopType = shopType;
-        console.log("component shopType: ", shopType);
-        //this.loadData();
-    }
-    private _shopType: ShopType;*/
 
     title: string;
     subtitle: string;
@@ -49,7 +38,7 @@ export class ProductGridComponent implements OnInit {
                     || this.shopType === ShopType.Cacti
                     || this.shopType === ShopType.Plants
                     || this.shopType === ShopType.Succulents) {
-                    let body: HTMLElement = document.querySelector("#grid-container");
+                    let body: HTMLElement = document.querySelector("#product-page");
 
                     this.loadData();
                     body.style.transition = "none";
@@ -61,7 +50,7 @@ export class ProductGridComponent implements OnInit {
         // the first time the component is loaded, the event is missed, so you have to call again
         // if you change store type after that, the loading is handled in the subscribe function
         this.loadData();
-        let body: HTMLElement = document.querySelector("#grid-container");
+        let body: HTMLElement = document.querySelector("#product-page");
 
     }
 
@@ -78,7 +67,7 @@ export class ProductGridComponent implements OnInit {
             this.stylingObj = this.productData.style;
             this.products = this.productData.products;
         });
-        let body: HTMLElement = document.querySelector("#grid-container");
+        let body: HTMLElement = document.querySelector("#product-page");
 
         setTimeout(() => {
             body.style.transition = "opacity 0.5s ease";

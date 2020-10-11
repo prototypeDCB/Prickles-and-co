@@ -9,16 +9,23 @@
 
 * {
     /*border-style: dashed;*/
-   /*box-shadow: inset 0px 0px 0px 1px red;*/
+    /*box-shadow: inset 0px 0px 0px 1px red;*/
     /*border-width: 1px;*/
 }
 
+#body-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color:  rgb(237,237,238);
+}
 #body {
     background-color:  rgb(237,237,238);
     font-family: "Lato", "Nunito Sans", sans-serif;
-    padding: 0 5vw 0 5vw;
     transition: opacity 0.6s ease;
     opacity: 0;
+    width: 90vw;
 }
 
 #company-name-container {
@@ -28,6 +35,7 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
 #company-name {
     display: flex;
     flex-direction: column;
@@ -85,7 +93,8 @@
     font-size: 6em;
     font-weight: 700;
     letter-spacing: 0.12em;
-    height: 150px;
+    //height: 150px;
+    margin: 50px 0 30px 0;
 }
 
 #company-name-subtitle {
@@ -102,8 +111,7 @@
     justify-content: center;
     align-items: center;
     background-color: #A86550;
-    animation-name: shop-button-hover-out;
-    animation-duration: 0.2s;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
     color:white;
     height: 40px;
@@ -111,8 +119,6 @@
 }
 
 .button:hover {
-    animation-name: shop-button-hover-in;
-    animation-duration: 0.2s;
     background-color: #D0B0A6;
 }
 #shop-button {
@@ -121,14 +127,17 @@
 
 #product-categories {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: rgb(237,237,238);
     padding: 60px 0 60px 0;
 }
 
 .product {
+    --prodWidth: 27vw;
     width: 27vw;
-    height: 498px;
+    height: calc(1.368038741 * var(--prodWidth));
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,13 +204,15 @@
     letter-spacing: 0.45em;
 }
 #about-us-paragraphs {
-    width: 31em;
+    width: 80%;
+    text-align: center;
 }
 
 #pic12 {
     width: 45vw;
-    height:498px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #pic1 {
@@ -237,18 +248,22 @@
 #about-buy-now {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width:45vw;
     background-color: #1A3032;
 
 }
 #about-buy-now-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #A86550;
     font-size: 5em;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 30px;
+    width: 70%;
+    height: 70%;
 }
 
 #requests-container {
@@ -260,8 +275,10 @@
 }
 
 #requests-marker {
+    width: 20px;
+    height: 0;
     position: relative;
-    top: -80px;
+    bottom: 60px;
 }
 #requests {
     display: flex;
@@ -273,13 +290,17 @@
 }
 
 #requests-title {
+    width: 76vw;
+    display: flex;
+    justify-content: center;
     color: #A86550;
     letter-spacing: 0.45em;
     font-size: 1.2em;
+    text-align: center;
 }
 
 #form {
-    width: 750px;
+    width: 70vw;
     font-family: "Lato", "Nunito Sans", sans-serif;
 }
 
@@ -298,6 +319,7 @@
 #form-name-email-container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 #form-name-email-container div {
     width: 48%;
@@ -321,9 +343,8 @@
 }
 
 #form button {
-    background-color: #A86550;
-    animation-name: shop-button-hover-out;
-    animation-duration: 0.2s;
+    background-color: #A86550; 
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
     color:white;
     height: 40px;
@@ -333,7 +354,145 @@
 }
 
 #form button:hover {
-    animation-name: shop-button-hover-in;
-    animation-duration: 0.2s;
     background-color: #D0B0A6;
+}
+
+@media only screen and (max-width: 1080px){
+    #body {
+    }
+
+    #company-name-title {
+        font-size: 4em;
+        justify-content: center;
+        margin: 30px 0 10px 0;
+
+    }
+    #about-buy-now-text-container {
+        font-size: 4em;
+    }
+}
+
+@media only screen and (max-width: 810px) {
+
+    #body {
+        width: 100vw;
+    }
+    #company-name-container, 
+    #requests-container {
+        background-attachment: scroll;
+    }
+    .product {
+        --prodWidth: 100vw;
+        width: 100vw;
+        margin: 30px 0 0 0;
+
+    }
+
+    #product-categories {
+        flex-direction: column;
+        align-items: center;
+    }
+    #about, #about-us, #pic12, #pic1, #pic2, #pic3, #about-buy-now {
+        width: 100vw;
+    }
+
+    #pic1, #pic2, #pic3 {
+        height: 332px;
+        background-size: 100vw auto;
+        -webkit-background-size: 100vw auto;
+        -moz-background-size: 100vw auto;
+        -o-background-size: 100vw auto;
+        background-position: 0 -300px;
+    }
+    #pic3 {
+        background-position: 0 -300px; 
+    }
+
+    #about-us {
+        height: 550px;
+    }
+
+    #about-us .underline-separator {
+        position: relative;
+        top: 10px;
+    }
+
+    #about-us-title {
+        font-size: 1.2em;
+    }
+    #about-us-paragraphs {
+        width: 90vw;
+        font-size: 1.2em;
+        font-weight: 300;
+    }
+    #about-buy-now {
+        height: 498px;
+    }
+    #about-buy-now-text-container {
+        max-width: 400px;
+        width: 90%;
+    }
+
+    #form-name-email-container div{
+        width: 95vw;
+    }
+
+    #form {
+        width: 90vw;
+    }
+    #requests {
+        height: 120vh;
+    }
+    #requests-title {
+        margin-top: 40px;
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #company-name-title {
+        font-size: 3em;
+    }
+    #company-name-subtitle {
+        font-size: 1em;
+    }
+
+    #pic1, #pic2, #pic3 {
+        height: 332px;
+        background-size: 100vw auto;
+        -webkit-background-size: 100vw auto;
+        -moz-background-size: 100vw auto;
+        -o-background-size: 100vw auto;
+        background-position: 0 -200px;
+    }
+    #pic3 {
+        background-position: 0 -100px; 
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    
+
+    #company-name-title {
+        font-size: 2em;
+    }
+    #company-name-subtitle {
+        font-size: 1em;
+    }
+
+    #about-buy-now-text-container {
+        font-size: 3em;
+    }
+
+    #pic1, #pic2, #pic3 {
+        height: 332px;
+        background-size: 100vw auto;
+        -webkit-background-size: 100vw auto;
+        -moz-background-size: 100vw auto;
+        -o-background-size: 100vw auto;
+        background-position: 0 -150px;
+    }
+    #pic3 {
+        background-position: 0 -50px; 
+    }
 }

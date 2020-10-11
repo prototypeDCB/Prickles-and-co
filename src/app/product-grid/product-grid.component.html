@@ -1,16 +1,24 @@
-<div id="grid-container">
-    <div id="title-container" [ngStyle]="stylingObj">
-        <div id="title-filter">
-            <div *ngIf="shopType != ShopType.All" id="back-to-all" (click)="loadShop(ShopType.All)"><span>&lt; Shop All</span></div>
-            <div id="title"><span>{{title}}</span></div>
-            <div id="subtitle"><p>{{subtitle}}</p></div>
-            <div id="scroll-to-products" (click)="scrollToProducts()"><img src="../../assets/images/scroll-to-products.gif"></div>
+<div id="product-page-container">
+    <div id="product-page">
+        <div id="title-container" [ngStyle]="stylingObj">
+            <div id="title-filter">
+                <div *ngIf="shopType != ShopType.All" id="back-to-all" (click)="loadShop(ShopType.All)"><span>&lt; Shop
+                        All</span></div>
+                <div id="title"><span>{{title}}</span></div>
+                <div id="subtitle">
+                    <p>{{subtitle}}</p>
+                </div>
+                <div id="scroll-to-products" (click)="scrollToProducts()"><img
+                        src="../../assets/images/scroll-to-products.gif"></div>
+
+            </div>
+        </div>
+        <div id="category-name">
             <div id="scroll-marker"></div>
-        </div>  
+            <span>{{categoryName}}</span>
+        </div>
+        <div id="grid-items">
+            <app-product *ngFor="let product of products" [product]="product"></app-product>
+        </div>
     </div>
-    <div id="category-name"><span>{{categoryName}}</span></div>
-    <div id="grid-items">
-        <app-product *ngFor="let product of products" [product]="product"></app-product>
-    </div>
-    
 </div>

@@ -117,8 +117,13 @@
               "devServerTarget": "prickles-and-co:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "prickles-and-co"
 }

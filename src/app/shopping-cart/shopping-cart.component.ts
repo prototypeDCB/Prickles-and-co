@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductFetchService } from '../product-fetch.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { CartItem } from '../cart-item';
+import { ShopType } from '../shop-type.enum';
 
 @Component({
     selector: 'app-shopping-cart',
@@ -11,12 +12,14 @@ import { CartItem } from '../cart-item';
 export class ShoppingCartComponent implements OnInit {
 
     static readonly ANIMATION_DELAY: number = 500;  //milliseconds 
-    static readonly CART_MIN_WIDTH: number = 300;
-    static readonly CART_WIDTH: number = 20;
+    static readonly CART_POSITION_HIDDEN: string = "-30vw";  //milliseconds 
     isVisible: boolean = true;  // with initial subscription it becomes false
     cartContents: CartItem[];
     displayCartEmitter: BehaviorSubject<number>;
     displayCartSubscription: Subscription;
+
+    shopTypeEmitter: BehaviorSubject<ShopType>;
+    shopTypeSubscription: Subscription;
 
     constructor(public productFetch: ProductFetchService) { }
 
@@ -27,16 +30,18 @@ export class ShoppingCartComponent implements OnInit {
                 this.toggleCart();
             }
         });
+        this.shopTypeEmitter = this.productFetch.getShopTypeEmitter();
         this.cartContents = this.productFetch.getCartContents();
-        //this.productFetch.addToCart("cactus1", 1);
-        //this.productFetch.addToCart("cactus2", 5);
-        //this.productFetch.addToCart("cactus3", 5);
-        //this.productFetch.addToCart("cactus4", 5);
+        this.productFetch.addToCart("cactus1", 1);
+        this.productFetch.addToCart("cactus2", 5);
+        this.productFetch.addToCart("cactus3", 5);
+        this.productFetch.addToCart("cactus4", 5);
     }
 
     ngOnDestroy() {
         this.displayCartSubscription.unsubscribe();
     }
+
     toggleCart() {
         if (this.isVisible) {
             this.hideCart();
@@ -46,102 +51,80 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     decreaseQuantity(item: CartItem): void {
-        if (item.quantity > 1) {
-            item.quantity--;
-        }
+        this.productFetch.decreaseItemQuantity(1,item);
     }
     increaseQuantity(item: CartItem): void {
-        if (item.quantity < 9999) {
-            item.quantity++;
-        }
+        this.productFetch.increaseItemQuantity(1,item);
     }
 
     checkQuantity(event: KeyboardEvent, item: CartItem): void {
-        let onlyNumbers = RegExp("^0*(?:[1-9][0-9]?|9999)$");
         let value: string = (event.target as HTMLInputElement).value;
-        if (!onlyNumbers.test(value)) {
-            (event.target as HTMLInputElement).value = item.quantity + "";
-        } else {
-            item.quantity = parseInt(value, 10);
-        }
-
-
+        this.productFetch.setItemQuantity(value, item);
+        (event.target as HTMLInputElement).value = item.quantity + "";  // updates current value in view
     }
     showCart(): void {
         let container = document.getElementById("shopping-container");
-        let shadow = document.getElementById("left-shadow");
+        let cartContainer = document.getElementById("right-shopping-container");
         let cart = document.getElementById("right-shopping");
+
         container.style.top = "0";  // puts component in view
-        shadow.style.backgroundColor = "rgba(0,0,0,0.5)";
-        cart.style.padding = "60px 30px 30px 30px";
+        container.style.backgroundColor = "rgba(0,0,0,0.5)";
 
         // fade effect
         setTimeout(() => {
-            let children = cart.children;
-            console.log("Children", children.length);
-            for (let i = 0; i < children.length; i++) {
-                let item: HTMLElement = children.item(i) as HTMLElement;
-                item.style.opacity = "1";
-            }
+            cart.style.opacity = "1";
         }, ShoppingCartComponent.ANIMATION_DELAY);
 
-        setTimeout(
-            () => { cart.style.minWidth = ShoppingCartComponent.CART_MIN_WIDTH + "px"; },
-            ShoppingCartComponent.ANIMATION_DELAY
-        );
-        cart.style.width = ShoppingCartComponent.CART_WIDTH + "vw";
+        cartContainer.style.right = "0";
 
         this.isVisible = true;
     }
 
     hideCart(): void {
+        let viewportWidth = document.documentElement.clientWidth;
+        // needed for proper animation 
+        let cartContainerPosition = viewportWidth > 810 ? "-30vw" : "-100vw";
         let container = document.getElementById("shopping-container");
-        let shadow = document.getElementById("left-shadow");
+        let cartContainer = document.getElementById("right-shopping-container");
         let cart = document.getElementById("right-shopping");
-        shadow.style.backgroundColor = "rgba(0,0,0,0)";
 
-        
+        container.style.backgroundColor = "rgba(0,0,0,0)";
 
         // fade effect
-        let children = cart.children;
-        for (let i = 0; i < children.length; i++) {
-            let item: HTMLElement = children.item(i) as HTMLElement;
-            item.style.opacity = "0";
-        }
-        // first fade, then decrease width
-        setTimeout(()=>{
-            cart.style.minWidth = "0";
-            cart.style.width = "0";
+        cart.style.opacity = "0";
+
+        // first fade, then move cart
+        setTimeout(() => {
+            cartContainer.style.right = cartContainerPosition;
         }, 200
         );    // fade delay
 
-        setTimeout(
-            () => { cart.style.padding = "0" },
-            ShoppingCartComponent.ANIMATION_DELAY - 300 + 200
-        );
-
-        
         setTimeout( // takes component out of view
             () => { container.style.top = "100vh"; },
             ShoppingCartComponent.ANIMATION_DELAY + 200
         );
 
-
         this.isVisible = false;
     }
 
-    showRemoveItem(element: HTMLElement): void{
+    showRemoveItem(element: HTMLElement): void {
         let removeItemButton: HTMLElement = element.querySelector(".remove-item");
         removeItemButton.style.opacity = "1";
     }
 
     hideRemoveItem(element: HTMLElement): void {
         let removeItemButton: HTMLElement = element.querySelector(".remove-item");
-        removeItemButton.style.opacity = "0";
+        if (document.documentElement.clientWidth > 810) {
+            removeItemButton.style.opacity = "0";
+        }
     }
 
-    removeItem(item: CartItem): void{
+    removeItem(item: CartItem): void {
         this.productFetch.removeFromCart(item.product.id);
+    }
+
+    loadShop(): void {
+        this.shopTypeEmitter.next(ShopType.Checkout);
     }
 
 

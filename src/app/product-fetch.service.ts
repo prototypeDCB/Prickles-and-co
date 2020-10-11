@@ -34,28 +34,36 @@ export class ProductFetchService {
 
 
     static readonly BACKGROUND_STYLING_CACTI = {
-        'background': 'url("../../assets/images/plants/cacti/cactus-background.png") no-repeat center center fixed',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center center',
+        'background-image': 'url("../../assets/images/plants/cacti/cactus-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
         'background-size': 'cover',
     }
     static readonly BACKGROUND_STYLING_PLANTS = {
-        'background': 'url("../../assets/images/plants/plants/plant-background.png") no-repeat center center fixed',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center center',
+        'background-image': 'url("../../assets/images/plants/plants/plant-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
         'background-size': 'cover',
     }
     static readonly BACKGROUND_STYLING_SUCCULENTS = {
-        'background': 'url("../../assets/images/plants/succulents/succulent-background.png") no-repeat center center fixed',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center center',
+        'background-image': 'url("../../assets/images/plants/succulents/succulent-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
         'background-size': 'cover',
     }
     static readonly BACKGROUND_STYLING_ALL = {
-        'background': 'url("../../assets/images/plants/all/all-background.png") no-repeat center center fixed',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center center',
+        'background-image': 'url("../../assets/images/plants/all/all-background.png")',
         '-webkit-background-size': 'cover',
         '-moz-background-size': 'cover',
         '-o-background-size': 'cover',
@@ -96,13 +104,43 @@ export class ProductFetchService {
         */
     }
 
+    checkQuantity() {
+
+    }
+    
+    setItemQuantity(value: string, item: CartItem): void {
+        /*let isValid: boolean;
+        if(!isNaN(parseInt(value))){
+            let valueInt = parseInt(value);
+            if (valueInt >= 1 && valueInt <= 9999) { item.quantity = valueInt; }
+            isValid = valueInt >= 1 && valueInt <= 9999;
+        } else {
+            isValid = false;
+        }
+
+        return isValid;*/
+        let valueInt: number = parseInt(value);
+        if (valueInt >= 1 && valueInt <= 9999) { item.quantity = valueInt; }
+    }
+    increaseItemQuantity(increment: number, item: CartItem): void {
+        if (item.quantity <= (9999 - increment)) {
+            item.quantity += increment;
+        }
+    }
+
+    decreaseItemQuantity(decrement: number, item: CartItem): void {
+        if (item.quantity >= (1 + decrement)) {
+            item.quantity -= decrement;
+        }
+    }
+
     getCartContents(): CartItem[] {
         return this.cartContents;
     }
 
     getCartTotalPrice(): number {
         let price = 0;
-        this.cartContents.forEach((item)=>{
+        this.cartContents.forEach((item) => {
             price += item.product.price * item.quantity;
         });
         return price;

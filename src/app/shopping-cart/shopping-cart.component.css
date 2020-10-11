@@ -16,43 +16,46 @@
 
 
 #shopping-container {
-    right: 100vw;
     position: fixed;
     display: flex;
     flex-direction: row;
-    top: 0;
+    top: 100vh;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: 20;
+    transition: background-color 0.7s ease-in-out;
+    background-color: rgba(0,0,0,0);
 }
 
 #left-shadow {
-    background-color: rgba(0,0,0,0.5);
+    width: 70vw;
     flex-grow: 1;
-    transition: background-color 0.7s ease;
+}
+
+#right-shopping-container {
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* VALUES WHEN VISIBLE
+    right: 0;
+    */
+    right: -30vw;
+    transition: right 0.5s ease;
+    background-color: #1A3032;
+    position: relative;
 }
 
 #right-shopping {
-    background-color: #1A3032;
-    transition: width 0.5s ease;
-
-    /* VALUES WHEN VISIBLE
-    min-width: 300px;
-    width: 20vw;
-    padding: 100px 30px 30px 0px;
-    */
-    min-width: 0;
-    width: 0;
-    padding: 0;
-
+    width: 90%;    
+    height: 90%;
     font-family: "Lato", "Nunito Sans", sans-serif;
     color: #A86550;
-}
-
-#right-shopping > div {
-    opacity: 0;
     transition: opacity 0.2s ease;
+    opacity: 0;
+    
 }
 
 #hide-icon {
@@ -80,30 +83,43 @@
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     height: 50%;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .item {
+    flex-direction: row;
+    align-content: center;
+    padding: 30px 0;
+    //background-color: dodgerblue;
+}
+
+.item-container {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 30px;
+    flex-direction: row;
+    //background-color: rgba(0,0,0,0.25);
+    padding: 0;
+    margin: 0;
 }
 
 .item-image{
     width: 80px;
     height: 80px;
+    position: relative;
     margin-right: 20px;
+    margin-bottom: auto;
+    margin-top: auto;
+    left: 0;
+
 }
 .item-image img{
     width: 100%;
     height: 100%;
 }
 
-.item-bottom-container {
-    display: flex;
-    flex-direction: row;
-}
 
 .item-right-content {
     display: flex;
@@ -111,10 +127,14 @@
     justify-content: space-between;
 }
 .item-separator {
-    width: 100%;
+    width: 70%;
     height: 1px;
+    position: relative;
+    top: 30px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #A86550;
-    margin-bottom: 30px;
+    
 }
 
 .quantity-selector {
@@ -122,6 +142,8 @@
     flex-direction: row;
     margin-top: 10px;
     height: 25px;
+    background-color: white;
+    width: fit-content;
 }
 
 .change-quantity {
@@ -129,6 +151,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 25px;
+    width: 25px;
     background-color: white;
     color: rgb(130,130,130);
     padding: 5px;
@@ -146,6 +170,8 @@
 
 .input-quantity {
     border-width: 0px;
+    border-radius: 0px;
+    margin: 0;
     width: 35px;
     text-align: center;
 }
@@ -156,18 +182,17 @@
     justify-content: center;
     align-items: center;
 
-    width: 1em;
-    height: 1em;
+    width: 18px;
+    height: 18px;
     position: relative;
-    left: 270px;
-    bottom: 80px;
+    left: 90%;
     transition: opacity 0.2s ease;
     opacity: 0;
     cursor: pointer;
     font-weight: 300;
     border: 1px solid #A86550;
-    border-radius: 2em;
-    padding: 2px 3px 3px 3px;
+    border-radius: 17px;
+    padding: 2px 2px 2px 2px;
 }
 
 #subtotal-title {
@@ -182,8 +207,7 @@
     width: 100%;
     height: 1px;
     background-color: #A86550;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px 0;
 }
 
 #view-cart {
@@ -195,13 +219,46 @@
     height: 45px;
     background-color: #A86550;
     color: white;
-    animation-name: buy-button-hover-out;
-    animation-duration: 0.2s;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 #view-cart:hover {
-    animation-name: buy-button-hover-in;
-    animation-duration: 0.2s;
     background-color: #D0B0A6;
+}
+
+@media only screen and (max-width: 1080px){
+
+    #right-shopping-container {
+        width: 40vw;
+    }
+}
+
+
+@media only screen and (max-width: 810px){
+
+    #left-shadow {
+        width: 0;
+    }
+
+    #right-shopping-container {
+        width: 100vw;
+        right: -100vw;
+        align-items: flex-start;
+    }
+    #right-shopping {
+        width: 80vw;
+        height: 80vh;
+        position: relative;
+        top: 5%;
+    }
+
+    .remove-item {
+        opacity: 1;
+    }
+
+    #separator {
+        margin: 20px 0;
+
+    }
 }

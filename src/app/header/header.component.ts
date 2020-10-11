@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit {
 
     private dropdownTimeout;   // used to handle shop type dropdown
 
+    private menuOpen = false;
+    private mobileListOpen = false;
+
     constructor(public productFetch: ProductFetchService ) {
         setInterval(this.changeBannerText(this.banner1, this.banner2), 3000);
     }
@@ -73,5 +76,39 @@ export class HeaderComponent implements OnInit {
         document.getElementById("shop-dropdown").style.left = left + "px";
     }
 
+    toggleHamburger(): void {
+        let hamburger: HTMLElement = document.querySelector("#menu-button");
+        let mobileMenu: HTMLElement = document.querySelector("#mobile-menu");
+
+        if(!this.menuOpen) {
+            hamburger.classList.add("open");
+            mobileMenu.style.top = "0";
+            mobileMenu.style.opacity = "1";
+            this.menuOpen = true;
+        } else {
+            hamburger.classList.remove("open");
+            mobileMenu.style.opacity = "0";
+            setTimeout(()=>{mobileMenu.style.top = "100vh"}, 500);
+            this.menuOpen = false;
+        }
+    }
+
+    displayMobileList(){
+        let list: HTMLElement = document.querySelector("#mobile-shopping-list");
+        let shopButton: HTMLElement = document.querySelector("#mobile-shopping-button span");
+        if(this.mobileListOpen){
+            list.style.maxHeight = "0";
+            list.style.margin = "0 0";
+            shopButton.innerHTML = "+";
+            setTimeout(()=>{list.style.display = "none";}, 500);
+            this.mobileListOpen = false;
+        } else {
+            list.style.display = "block";
+            list.style.maxHeight = list.scrollHeight + "px";
+            list.style.margin = "50px 0";
+            shopButton.innerHTML = "-";
+            this.mobileListOpen = true;
+        }
+    }
 }
 
