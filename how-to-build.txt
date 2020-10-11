@@ -1,0 +1,5 @@
+ng build --prod
+
+ng add angular-cli-ghpages
+
+ng deploy --base-href=https://prototypedcb.github.io/Prickles-and-co
